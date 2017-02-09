@@ -1,4 +1,5 @@
-#!/bin/bash -eu
+#!/usr/bin/env bash
+set -eu
 
 SCRIPT=$(readlink -m $(type -p "$0"))
 SCRIPTDIR=${SCRIPT%/*}      
@@ -18,4 +19,9 @@ dirOutput=$1
 datadir="$SCRIPTDIR/"
 ls -1 $datadir/*mask.nrrd | sed "s|.*\/|$datadir|" > /tmp/t2masks.txt
 ls -1 $datadir/*t2w.nrrd | sed "s|.*\/|$datadir|" > /tmp/t2s.txt
+
+# no header
 paste -d, /tmp/t2s.txt /tmp/t2masks.txt > $dirOutput/trainingDataT2Masks.csv
+# with header
+echo "image,mask" > $dirOutput/trainingDataT2Masks-hdr.csv
+paste -d, /tmp/t2s.txt /tmp/t2masks.txt >> $dirOutput/trainingDataT2Masks-hdr.csv
