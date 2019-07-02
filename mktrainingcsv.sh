@@ -25,3 +25,6 @@ paste -d, /tmp/t2s.txt /tmp/t2masks.txt > $dirOutput/trainingDataT2Masks.csv
 # with header
 echo "image,mask" > $dirOutput/trainingDataT2Masks-hdr.csv
 paste -d, /tmp/t2s.txt /tmp/t2masks.txt >> $dirOutput/trainingDataT2Masks-hdr.csv
+
+rm /tmp/t2s.txt /tmp/t2masks.txt
+
