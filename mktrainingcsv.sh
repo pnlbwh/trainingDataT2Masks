@@ -1,5 +1,5 @@
-#!/usr/bin/env bash
-set -eu
+#!/usr/bin/bash
+
 
 SCRIPT=$(readlink -m $(type -p "$0"))
 SCRIPTDIR=${SCRIPT%/*}      
@@ -9,7 +9,7 @@ usage() {
 Usage: 
     ${0##*/} <dir>
 
-    <dir>   output directory
+    <dir>   output directory for csv files
     "
 }
 
